@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.DriverUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class BaseElement {
     WebDriver driver = DriverUtils.getDriver();
 
@@ -30,6 +33,18 @@ public abstract class BaseElement {
 
     private WebElement findElement() {
         return driver.findElement(this.locator);
+    }
+
+    private List<WebElement> findElements() {
+        return driver.findElements(this.locator);
+    }
+
+    public List<String> getList(int k) {
+        List<String> price = new ArrayList<>();
+        for (int i=k; i< findElements().size();i++){
+            price.add(findElements().get(i).getText());
+        }
+        return price;
     }
 
     public String getText() {
