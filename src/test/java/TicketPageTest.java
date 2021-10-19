@@ -20,14 +20,15 @@ public class TicketPageTest extends BaseTest {
         log.info("Open main page");
         browserUtils.openMainPage();
         log.info("Fill in tickets information");
-        mainPage.fillInformation(fromCity,toCity, dateUtils.tomorrowDate(),dateUtils.DayAfterTomorrow());
+        mainPage.fillInformation(fromCity,toCity, dateUtils.tomorrowDate(),dateUtils.dayAfterTomorrow());
         log.info("Check if origin city is correct");
         Assert.assertEquals(ticketPage.checkCity(),fromCity,"Origin city name is incorrect");
         log.info("Check if destination city is correct");
         Assert.assertEquals(ticketPage.checkCity2(),toCity,"Destination city name is incorrect");
-        log.info("");
-        log.info("");
-        System.out.println(ticketPage.checkDateForward());
+        log.info("Check if origin date is correct");
+        Assert.assertEquals(ticketPage.checkDateForward(),dateUtils.tomorrowDate(),"Days are different");
+        log.info("Check if destination date is correct");
+        Assert.assertEquals(ticketPage.checkDateBack(),dateUtils.dayAfterTomorrow(),"Days are different");
         log.info("Check if price is ordered");
         Assert.assertEquals(ticketPage.price(),true,"Price is not ordered");
     }

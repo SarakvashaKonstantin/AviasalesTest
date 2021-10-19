@@ -47,11 +47,11 @@ public class TicketPage extends BaseForm {
     }
 
     public String checkDateForward(){
-        return originDate.getText();
+        return originDate.getText().substring(0,2);
     }
 
     public String checkDateBack(){
-        return returnDate.getText();
+        return returnDate.getText().substring(0,2);
     }
 
     public boolean price(){

@@ -21,7 +21,7 @@ public class DateUtils {
         return String.valueOf((calendar.get(Calendar.DAY_OF_MONTH))+1);
     }
 
-    public String DayAfterTomorrow(){
+    public String dayAfterTomorrow(){
         return String.valueOf((calendar.get(Calendar.DAY_OF_MONTH))+2);
     }
 }
