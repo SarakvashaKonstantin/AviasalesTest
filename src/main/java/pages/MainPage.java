@@ -4,6 +4,7 @@ import base.BaseForm;
 import elements.Button;
 import elements.TextField;
 import org.openqa.selenium.By;
+import utils.DateUtils;
 
 import java.util.Date;
 
@@ -18,11 +19,6 @@ public class MainPage extends BaseForm {
     private static final TextField dayForward = new TextField(By.xpath("//div[@class='trip-duration__input-wrapper" +
             " --departure']"),
             "From day");
-
-    //private static Date date = new Date();
-    String day = "21";//String.format("%te ",date);
-    public Button dayNumber = new Button(By.xpath("//div[text()='"+day+"']"),
-            "Day Number");
 
     private static final Button addPassBtn = new Button(By.xpath("//div[@class='avia-form__field --passengers']"),
             "Passenger count list");
@@ -39,16 +35,19 @@ public class MainPage extends BaseForm {
 
     public MainPage() {super(origin, "Main Page");}
 
-    public void fillInformation(String fromCity, String toCity){
+    public void fillInformation(String fromCity, String toCity, String day1, String day2){
+        Button dayNumber = new Button(By.xpath("//div[text()='"+day1+"']"),
+                "Day Number");
         origin.click();
         origin.sendKeys(fromCity);
         destination.sendKeys(toCity);
         dayForward.click();
         waitForOpen(dayNumber);
         dayNumber.click();
-        day = "23";
-        waitForOpen(dayNumber);
-        dayNumber.click();
+        Button dayNumber2 = new Button(By.xpath("//div[text()='"+day2+"']"),
+                "Day Number");
+        waitForOpen(dayNumber2);
+        dayNumber2.click();
         addPassBtn.click();
         childrenIncBtn.click();
         bookingBtn.click();

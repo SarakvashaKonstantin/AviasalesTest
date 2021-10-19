@@ -18,8 +18,11 @@ public class TicketPage extends BaseForm {
             "//div[@class='segment-route__city']"),
             "City Origin");
 
-    private static final Label originDate = new Label(By.xpath("//div[@class='segment-route__date']"),
+    private static final Label originDate = new Label(By.xpath("(//div[@class='segment-route__date'])[1]"),
             "Date Origin");
+
+    private static final Label returnDate = new Label(By.xpath("(//div[@class='segment-route__date'])[4]"),
+            "Date Destination");
 
     private static final Label destinationCity = new Label(By.xpath("//div[@class='segment-route__endpoint destination']" +
             "//div[@class='segment-route__city']"),
@@ -43,8 +46,12 @@ public class TicketPage extends BaseForm {
         return destinationCity.getText();
     }
 
-    public String checkDate(){
+    public String checkDateForward(){
         return originDate.getText();
+    }
+
+    public String checkDateBack(){
+        return returnDate.getText();
     }
 
     public boolean price(){
