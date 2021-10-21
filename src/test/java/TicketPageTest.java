@@ -1,3 +1,4 @@
+import base.BrowserProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MainPage;
@@ -11,8 +12,8 @@ public class TicketPageTest extends BaseTest {
     MainPage mainPage = new MainPage();
     TicketPage ticketPage = new TicketPage();
 
-    String fromCity = "Москва";
-    String toCity = "Санкт-Петербург";
+    String fromCity = BrowserProperties.getTestDataProperty("FromCity");
+    String toCity = BrowserProperties.getTestDataProperty("ToCity");
     DateUtils dateUtils = new DateUtils();
 
     @Test
